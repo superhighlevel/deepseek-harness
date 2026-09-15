@@ -1,0 +1,148 @@
+/* Matches the sibling action buttons in the same row (ui-chat
+   MessageIconActions and ui-message-feedback), including the Settings
+   font-size axis so the control tracks its neighbours at every size. */
+.action,
+.gear {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(28px + var(--dsh-content-font-delta, 0px));
+  height: calc(28px + var(--dsh-content-font-delta, 0px));
+  padding: 6px;
+  border: none;
+  border-radius: 28px;
+  background: transparent;
+  color: var(--dsw-alias-label-tertiary);
+  cursor: pointer;
+}
+
+.action svg,
+.gear svg {
+  width: calc(15px + var(--dsh-content-font-delta, 0px));
+  height: calc(15px + var(--dsh-content-font-delta, 0px));
+}
+
+.action:hover,
+.gear:hover {
+  background: var(--dsw-alias-interactive-bg-hover);
+  color: var(--dsw-alias-label-secondary);
+}
+
+/* An in-flight or active read stays legible without hover. */
+.action[data-active] {
+  color: var(--dsw-alias-label-secondary);
+}
+
+.spin {
+  animation: dsh-tts-spin 0.9s linear infinite;
+}
+
+@keyframes dsh-tts-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spin {
+    animation: none;
+  }
+}
+
+/* The gear is a secondary affordance: dimmer than the speak control it serves. */
+.gear {
+  opacity: 0.6;
+}
+
+.gear:hover {
+  opacity: 1;
+}
+
+.failure {
+  padding-left: 4px;
+  color: var(--dsw-alias-label-tertiary);
+  font-size: 13px;
+  line-height: 20px;
+}
+
+/* Portaled to the body and positioned from the gear's viewport rect, so the
+   panel escapes the action row's clip and the transcript's scroll container. */
+.popover {
+  position: fixed;
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 232px;
+  padding: 12px;
+  border: 1px solid var(--dsw-alias-border-l2);
+  border-radius: 10px;
+  background: var(--dsw-alias-bg-layer-2, var(--dsw-alias-bg-base));
+  box-shadow: 0 6px 24px rgb(0 0 0 / 18%);
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.label {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  color: var(--dsw-alias-label-secondary);
+  font-size: 12px;
+}
+
+.value {
+  color: var(--dsw-alias-label-tertiary);
+  font-variant-numeric: tabular-nums;
+}
+
+.select {
+  width: 100%;
+  padding: 4px 6px;
+  border: 1px solid var(--dsw-alias-border-l2);
+  border-radius: 6px;
+  background: var(--dsw-alias-bg-base);
+  color: var(--dsw-alias-label-primary);
+  font-size: 12px;
+}
+
+.range {
+  width: 100%;
+  accent-color: var(--dsw-alias-label-secondary);
+}
+
+.presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.preset {
+  padding: 2px 7px;
+  border: 1px solid var(--dsw-alias-border-l2);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--dsw-alias-label-tertiary);
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.preset[data-active] {
+  border-color: var(--dsw-alias-label-secondary);
+  color: var(--dsw-alias-label-primary);
+}
+
+.close {
+  align-self: flex-end;
+  padding: 3px 10px;
+  border: none;
+  border-radius: 6px;
+  background: var(--dsw-alias-interactive-bg-hover);
+  color: var(--dsw-alias-label-secondary);
+  font-size: 12px;
+  cursor: pointer;
+}
