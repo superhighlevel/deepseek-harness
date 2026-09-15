@@ -321,6 +321,18 @@
     - id: ui-message-feedback
       name: '@deepseek-ai/dsh-client-ui-message-feedback'
 
+    # The TTS surface: a speak control in the assistant-message action strip
+    # that reads a reply aloud through a Kokoro OpenAI-compatible endpoint. The
+    # node half registers the authenticated route and owns the HTTP call; the
+    # browser half only posts to it and plays the returned audio.
+    - id: ui-tts
+      name: '@deepseek-ai/dsh-client-ui-tts'
+      config:
+        baseUrl: http://127.0.0.1:8880
+        voice: af_heart
+        speed: 1
+        maxChars: 4000
+
     # Model selection: the /model popupSelect + composer seat over session.models.
     - id: ui-model-selection
       name: '@deepseek-ai/dsh-client-ui-model-selection'
