@@ -2471,7 +2471,7 @@ importers:
         specifier: workspace:*
         version: link:../../client/ui-trajectory
       '@deepseek-ai/dsh-client-ui-tts':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../../client/ui-tts
       '@deepseek-ai/dsh-client-ui-user-questions':
         specifier: workspace:*
